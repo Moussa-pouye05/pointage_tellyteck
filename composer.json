@@ -1,0 +1,17 @@
+{
+    "name": "hp/pointage_tellyteck",
+    "autoload": {
+        "psr-4": {
+            "Hp\\PointageTellyteck\\": "src/",
+            "App\\": "app/",
+            "Config\\": "config/"
+        }
+    },
+    "authors": [
+        {
+            "name": "kallahmou",
+            "email": "pouyemoussa826@gmail.com"
+        }
+    ],
+    "require": {}
+}
