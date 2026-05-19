@@ -110,6 +110,75 @@ class AuthController
         $this->render('etudiant/dashboard', 'Dashboard Etudiant', ['user' => $user]);
     }
 
+    public function dashboard(): void
+    {
+        $user = $this->requireAuth();
+        $this->redirectByRole($user['role']);
+    }
+
+    public function presences(): void
+    {
+        $user = $this->requireRole('admin');
+        $this->render('admin/presences', 'Présences', ['user' => $user]);
+    }
+
+    public function absences(): void
+    {
+        $user = $this->requireRole('admin');
+        $this->render('admin/absences', 'Absences', ['user' => $user]);
+    }
+
+    public function conge(): void
+    {
+        $user = $this->requireAuth();
+        $view = $user['role'] === 'admin' ? 'admin/conges' : 'etudiant/mes_conges';
+        $this->render($view, 'Congé', ['user' => $user]);
+    }
+
+    public function utilisateurs(): void
+    {
+        $user = $this->requireRole('admin');
+        $this->render('admin/utilisateurs', 'Utilisateurs', ['user' => $user]);
+    }
+
+    public function qrcode(): void
+    {
+        $user = $this->requireAuth();
+        $view = $user['role'] === 'admin' ? 'admin/qr_code' : 'etudiant/scanne_qr';
+        $this->render($view, 'Scanne QR', ['user' => $user]);
+    }
+
+    public function feries(): void
+    {
+        $user = $this->requireRole('admin');
+        $this->render('admin/ferie', 'Jours fériés', ['user' => $user]);
+    }
+
+    public function notifications(): void
+    {
+        $user = $this->requireAuth();
+        $view = $user['role'] === 'admin' ? 'admin/notifications' : 'etudiant/notifications';
+        $this->render($view, 'Notifications', ['user' => $user]);
+    }
+
+    public function mesPresences(): void
+    {
+        $user = $this->requireRole('etudiant');
+        $this->render('etudiant/mes_presences', 'Mes présences', ['user' => $user]);
+    }
+
+    public function mesAbsences(): void
+    {
+        $user = $this->requireRole('etudiant');
+        $this->render('etudiant/mes_absences', 'Mes absences', ['user' => $user]);
+    }
+
+    public function auditLogs(): void
+    {
+        $user = $this->requireRole('admin');
+        $this->render('admin/audit_logs', 'Audit logs', ['user' => $user]);
+    }
+
     public function profileForm(): void
     {
         $user = $this->requireAuth();
@@ -134,7 +203,7 @@ class AuthController
 
         $photoPath = $this->handleProfilePhoto();
         if ($photoPath !== null) {
-            $data['profil'] = $photoPath;
+            $data['profil'] = $photoPath; 
         }
 
         $this->users()->updateProfile((int)$user['id'], $data);

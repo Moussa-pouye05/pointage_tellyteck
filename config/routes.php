@@ -33,9 +33,29 @@ $router->get('/', 'AuthController@loginForm');
 $router->get('/register-form', 'AuthController@registerForm');
 $router->get('/forgot-password', 'AuthController@forgotPasswordForm');
 $router->get('/reset-password', 'AuthController@resetPasswordForm');
+$router->get('/dashboard', 'AuthController@dashboard');
 $router->get('/admin/dashboard', 'AuthController@adminDashboard');
 $router->get('/etudiant/dashboard', 'AuthController@etudiantDashboard');
 $router->get('/profile', 'AuthController@profileForm');
+$router->get('/profil', 'AuthController@profileForm');
+$router->get('/presences', 'AuthController@presences');
+$router->get('/presence', 'AuthController@presences');
+$router->get('/absences', 'AuthController@absences');
+$router->get('/absence', 'AuthController@absences');
+$router->get('/mes-presences', 'AuthController@mesPresences');
+$router->get('/mes_presence', 'AuthController@mesPresences');
+$router->get('/mes-absences', 'AuthController@mesAbsences');
+$router->get('/mes_absence', 'AuthController@mesAbsences');
+$router->get('/conge', 'AuthController@conge');
+$router->get('/conges', 'AuthController@conge');
+$router->get('/utilisateurs', 'AuthController@utilisateurs');
+$router->get('/utilisateur', 'AuthController@utilisateurs');
+$router->get('/qrcode', 'AuthController@qrcode');
+$router->get('/feries', 'AuthController@feries');
+$router->get('/notifications', 'AuthController@notifications');
+$router->get('/notification', 'AuthController@notifications');
+$router->get('/audit-logs', 'AuthController@auditLogs');
+$router->get('/audit_log', 'AuthController@auditLogs');
 
 /**
  * ROUTES POST - Traitement des formulaires
@@ -53,30 +73,12 @@ $router->post('/register', 'AuthController@register');
 $router->post('/forgot-password', 'AuthController@sendResetLink');
 $router->post('/reset-password', 'AuthController@resetPassword');
 $router->post('/profile', 'AuthController@updateProfile');
+$router->post('/profil', 'AuthController@updateProfile');
 
 // Route pour déconnecter l'utilisateur
 // URL: http://localhost/logout
 // Contrôleur: AuthController, Méthode: logout()
 $router->get('/logout', 'AuthController@logout');
 
-/**
- * COMMENT AJOUTER UNE NOUVELLE ROUTE ?
- * 
- * Exemple: Créer un contrôleur Dashboard
- * 
- * 1. Créer le fichier: app/controllers/DashboardController.php
- *    avec une méthode index()
- * 
- * 2. Ajouter la route:
- *    $router->get('/dashboard', 'DashboardController@index');
- * 
- * 3. Créer la vue: app/views/dashboard/index.php
- * 
- * 4. Dans le contrôleur:
- *    public function index() {
- *        $this->render('dashboard/index');
- *    }
- * 
- * Maintenant, quand l'utilisateur accède à http://localhost/dashboard,
- * il verra la page du tableau de bord.
- */
+//gestion utilisateur
+$router->get('/user','UserController@utilisateur');
