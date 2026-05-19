@@ -5,9 +5,13 @@
     <title><?= $title ?? 'PointageTellyteck' ?></title>
 
     <link rel="stylesheet" href="<?= ASSET_URL ?>/css/output.css">
+    <link rel="stylesheet" href="<?= ASSET_URL ?>/css/user.css?v=1">
+
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 </head>
-<body class="bg-gray-100 p-0 m-0">
+<body class="p-0 m-0">
 
     <?php if (!empty($_SESSION['flash']['success'])): ?>
         <div class="fixed left-1/2 top-4 z-50 w-[calc(100%-2rem)] max-w-xl -translate-x-1/2 rounded-lg border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-700 shadow">
@@ -34,6 +38,7 @@
     <?php endif; ?>
 
     <?= $content ?>
+    <script src="<?= ASSET_URL ?>/js/navbar.js"></script>
 
 </body>
 </html>

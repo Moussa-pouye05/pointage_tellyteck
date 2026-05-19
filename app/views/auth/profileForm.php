@@ -1,4 +1,6 @@
-<div class="min-h-screen bg-slate-100 px-4 py-8">
+<?php require_once __DIR__ . "/../partials/navbar.php"?>
+<?php require_once __DIR__ . "/../partials/header.php"?>
+<main class="min-h-screen ml-6 md:ml-60 mt-16">
     <div class="mx-auto max-w-3xl rounded-2xl bg-white p-8 shadow">
         <div class="mb-8 flex items-center justify-between gap-4">
             <div>
@@ -8,7 +10,7 @@
             <a class="rounded-lg bg-slate-800 px-4 py-2 text-sm font-medium text-white hover:bg-slate-900" href="<?= BASE_URL ?>/logout?csrf_token=<?= urlencode($csrfToken) ?>">Déconnexion</a>
         </div>
 
-        <form action="<?= BASE_URL ?>/profile" method="POST" enctype="multipart/form-data" class="grid gap-5">
+        <form action="<?= BASE_URL ?>/profil" method="POST" enctype="multipart/form-data" class="grid gap-5">
             <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($csrfToken) ?>">
 
             <?php if (!empty($user['profil'])): ?>
@@ -54,4 +56,4 @@
             </button>
         </form>
     </div>
-</div>
+</main>

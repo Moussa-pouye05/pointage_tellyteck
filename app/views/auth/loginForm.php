@@ -78,8 +78,8 @@
                 <!-- Options supplémentaires -->
                 <div class="flex items-center justify-between">
                     <label class="flex items-center cursor-pointer">
-                        <input type="checkbox" class="rounded border-gray-300 text-slate-600 focus:ring-slate-500">
-                        <span class="ml-2 text-xs sm:text-sm text-gray-600">Se souvenir de moi</span>
+                        <!-- <input type="checkbox" class="rounded border-gray-300 text-slate-600 focus:ring-slate-500">
+                        <span class="ml-2 text-xs sm:text-sm text-gray-600">Se souvenir de moi</span> -->
                     </label>
                     <a href="<?= BASE_URL ?>/forgot-password" class="text-xs sm:text-sm text-slate-600 hover:text-slate-700 font-medium">Mot de passe oublié ?</a>
                 </div>
@@ -89,11 +89,6 @@
                     Se connecter
                 </button>
             </form>
-
-            <p class="mt-6 text-center text-sm text-gray-600">
-                Pas encore de compte ?
-                <a class="text-slate-600 hover:text-slate-700 font-medium" href="<?= BASE_URL ?>/register-form">Créer un compte</a>
-            </p>
         </div>
     </div>
 </div>

@@ -1,4 +1,6 @@
-<div class="min-h-screen bg-slate-100 px-4 py-8">
+<?php require_once __DIR__ . "/../partials/navbar.php"?>
+<?php require_once __DIR__ . "/../partials/header.php"?>
+<main class="min-h-screen ml-6 md:ml-60 mt-16">
     <div class="mx-auto max-w-5xl">
         <div class="mb-6 flex items-center justify-between gap-4">
             <div>
@@ -6,7 +8,7 @@
                 <p class="text-sm text-gray-500">Bonjour <?= htmlspecialchars($user['nom']) ?>, gestion du pointage Tellyteck.</p>
             </div>
             <div class="flex gap-3">
-                <a class="rounded-lg border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-white" href="<?= BASE_URL ?>/profile">Profil</a>
+                <a class="rounded-lg border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-white" href="<?= BASE_URL ?>/profil">Profil</a>
                 <a class="rounded-lg bg-slate-900 px-4 py-2 text-sm font-medium text-white hover:bg-slate-800" href="<?= BASE_URL ?>/logout?csrf_token=<?= urlencode($csrfToken) ?>">Déconnexion</a>
             </div>
         </div>
@@ -26,4 +28,4 @@
             </div>
         </div>
     </div>
-</div>
+</main>
