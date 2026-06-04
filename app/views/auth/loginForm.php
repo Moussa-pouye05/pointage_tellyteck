@@ -10,6 +10,8 @@
                 </div>
                 <h2 class="text-2xl sm:text-3xl font-bold mb-2 sm:mb-4">Bienvenue</h2>
                 <p class="text-white/80 text-xs sm:text-sm">Connectez-vous pour accéder à votre espace de pointage</p>
+
+                
             </div>
         </div>
 
@@ -26,7 +28,12 @@
                 <!-- Le message d'erreur s'affichera ici si transmission d'erreur -->
                 Identifiants incorrects
             </div>
-
+            <?php if (!empty($_SESSION['flash']['error'])): ?>
+                    <div class="mt-4 px-3 py-2 bg-red-50/95 border border-red-200 rounded-lg text-red-700 text-[11px] sm:text-sm shadow">
+                        <?= htmlspecialchars($_SESSION['flash']['error']) ?>
+                    </div>
+                    <?php unset($_SESSION['flash']['error']); ?>
+                <?php endif; ?>
             <!-- Formulaire de connexion -->
             <form action="<?= BASE_URL ?>/login" method="POST" class="space-y-4 sm:space-y-6">
                 <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($csrfToken) ?>">
