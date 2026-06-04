@@ -105,7 +105,7 @@ $isActive = static function (array $item) use ($currentPath): bool {
 ?>
 
 <aside id="sideBare"
-class="fixed -left-60 md:left-0 top-0 z-50 flex min-h-screen w-60 shrink-0 flex-col overflow-hidden bg-[#0a0f1e] shadow-xl transition-all duration-300">
+class="fixed -left-60 md:left-0  top-0 z-50 w-60 flex flex-col shrink-0 overflow-hidden bg-[#0a0f1e] min-h-screen transition-all duration-300">
     <div class="flex items-center gap-3 border-b border-blue-400/10 px-5 py-5">
         <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-blue-600">
             <i class="ti ti-fingerprint text-[19px] text-white" aria-hidden="true"></i>
@@ -114,7 +114,7 @@ class="fixed -left-60 md:left-0 top-0 z-50 flex min-h-screen w-60 shrink-0 flex-
             <p class="font-mono text-[11px] font-medium uppercase leading-none tracking-[.18em] text-blue-100">Tellyteck</p>
             <p class="mt-1 text-[10px] uppercase tracking-widest text-slate-500">Pointage</p>
         </div>
-        <button id="close-sidebar" class="text-2xl text-slate-500 hover:text-slate-400 transition-duration-150 absolute top-3 right-3 block md:hidden">X</button>
+        <button id="close-sidebar" type="button" class="text-2xl text-slate-500 hover:text-slate-400 transition-duration-150 absolute top-3 right-3 block md:hidden" aria-label="Fermer le menu">X</button>
     </div>
 
     <nav class="flex-1 overflow-y-auto px-3 py-4">
