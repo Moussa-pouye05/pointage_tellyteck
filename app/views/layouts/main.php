@@ -40,6 +40,7 @@
     <script src="<?= ASSET_URL ?>/js/navbar.js"></script>
     <script src="<?= ASSET_URL ?>/js/conge_etudiant.js"></script>
     <script src="<?= ASSET_URL ?>/js/qrcode_admin.js"></script>
+    <script src="<?= ASSET_URL ?>/js/qrcode_etudiant.js"></script>
 
 </body>
 </html>
