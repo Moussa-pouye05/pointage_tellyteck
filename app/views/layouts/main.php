@@ -23,9 +23,7 @@
         </div>
         <?php unset($_SESSION['flash']['success']); ?>
     <?php endif; ?>
-
-
-
+    
 
     <?php if (!empty($_SESSION['flash']['reset_link'])): ?>
 
