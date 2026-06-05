@@ -7,11 +7,13 @@
 
     <link rel="stylesheet" href="<?= ASSET_URL ?>/css/output.css">
     <link rel="stylesheet" href="<?= ASSET_URL ?>/css/user.css?v=1">
+    <link rel="stylesheet" href="<?= ASSET_URL ?>/css/conge.css?v=1">
+    <link rel="stylesheet" href="<?= ASSET_URL ?>/css/absences.css?v=1">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body class="p-0 m-0">
 
