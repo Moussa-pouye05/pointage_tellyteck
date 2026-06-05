@@ -9,7 +9,7 @@ class Database
     private string $host = "localhost";
     private string $dbname = "pointage";
     private string $user = "root";
-    private string $password = "";
+    private string $password = "12345";
 
     private ?PDO $pdo = null;
 

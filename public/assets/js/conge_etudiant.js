@@ -70,6 +70,7 @@ const fileName = document.getElementById('file-name');
 const requestSummary = document.getElementById('request-summary');
 
 // Ouvrir le modal Nouvelle demande
+if(btnNewRequest){
 btnNewRequest.addEventListener('click', () => {
   modalNewRequest.classList.remove('hidden');
   modalNewRequest.classList.add('flex');
@@ -79,6 +80,8 @@ btnNewRequest.addEventListener('click', () => {
     modalNewRequest.querySelector('.transform').classList.add('scale-100');
   }, 10);
 });
+}
+
 
 // Fermer le modal Nouvelle demande
 function closeNewRequestModal() {
@@ -93,16 +96,21 @@ function closeNewRequestModal() {
     requestSummary.textContent = 'Veuillez sélectionner les dates pour voir la durée.';
   }, 200);
 }
-
+if(closeModalNew || cancelRequest){
 closeModalNew.addEventListener('click', closeNewRequestModal);
 cancelRequest.addEventListener('click', closeNewRequestModal);
+}
+
 
 // Fermer le modal en cliquant en dehors
+if(modalNewRequest){
 modalNewRequest.addEventListener('click', (e) => {
   if (e.target === modalNewRequest) {
     closeNewRequestModal();
   }
 });
+}
+
 
 // Ouvrir le modal Détails
 document.querySelectorAll('.btn-view-data').forEach(button => {
@@ -165,15 +173,21 @@ function closeDetailsModal() {
   }, 200);
 }
 
-closeModalDetails.addEventListener('click', closeDetailsModal);
-closeModalDetailsBtn.addEventListener('click', closeDetailsModal);
+if(closeModalDetails || closeModalDetailsBtn){
+  closeModalDetails.addEventListener('click', closeDetailsModal);
+  closeModalDetailsBtn.addEventListener('click', closeDetailsModal);
+}
+
 
 // Fermer le modal en cliquant en dehors
-modalDetails.addEventListener('click', (e) => {
+if(modalDetails){
+  modalDetails.addEventListener('click', (e) => {
   if (e.target === modalDetails) {
     closeDetailsModal();
   }
 });
+}
+
 
 // Calcul automatique du nombre de jours
 function calculateDays() {
@@ -198,10 +212,14 @@ function calculateDays() {
   }
 }
 
-requestStartDate.addEventListener('change', calculateDays);
-requestEndDate.addEventListener('change', calculateDays);
+if(requestStartDate || requestEndDate){
+  requestStartDate.addEventListener('change', calculateDays);
+  requestEndDate.addEventListener('change', calculateDays);
+}
+
 
 // Affichage du nom du fichier sélectionné
+if(requestFile){
 requestFile.addEventListener('change', function() {
   if (this.files && this.files[0]) {
     fileName.textContent = this.files[0].name;
@@ -209,7 +227,7 @@ requestFile.addEventListener('change', function() {
     fileName.textContent = '';
   }
 });
-
+}
 // Téléchargement de fichier
 function downloadFile(filename) {
   if (!filename) return;
@@ -226,6 +244,7 @@ function downloadFile(filename) {
 }
 
 // Validation et soumission du formulaire
+if(formNewRequest){
 formNewRequest.addEventListener('submit', function(e) {
   e.preventDefault();
   
@@ -251,7 +270,7 @@ formNewRequest.addEventListener('submit', function(e) {
   
   // Ici, vous ajouteriez le code pour envoyer les données au backend PHP
 });
-
+}
 // Fermer les modals avec la touche Échap
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') {
