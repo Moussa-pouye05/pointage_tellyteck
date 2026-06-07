@@ -52,6 +52,7 @@ $router->get('/utilisateurs', 'AuthController@utilisateurs');
 $router->get('/utilisateur', 'AuthController@utilisateurs');
 $router->get('/qrcode', 'AuthController@qrcode');
 $router->get('/feries', 'AuthController@feries');
+$router->get('/cohorte', 'AuthController@cohorteDept');
 $router->get('/notifications', 'AuthController@notifications');
 $router->get('/notification', 'AuthController@notifications');
 $router->get('/audit-logs', 'AuthController@auditLogs');
