@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\CohorteDept;
 use App\Models\User;
 
 class AuthController
