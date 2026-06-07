@@ -83,3 +83,6 @@ $router->get('/logout', 'AuthController@logout');
 
 //gestion utilisateur
 $router->get('/user','UserController@utilisateur');
+$router->post('/cohorte/save', 'CohorteController@saveCohorte');
+$router->post('/cohorte/toggle', 'CohorteController@toggleCohorte');
+$router->post('/departement', 'CohorteController@createDepartment');
