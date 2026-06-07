@@ -1,7 +1,6 @@
 <?php require_once __DIR__ . "/../partials/navbar.php"?>
 <?php require_once __DIR__ . "/../partials/header.php"?>
 <main class="min-h-screen ml-6 md:ml-60 mt-16">
-<<<<<<< HEAD
     <div class="mx-auto max-w-7xl px-4 sm:px-6">
         <!-- SECTION 1 : Header de page -->
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
@@ -156,182 +155,371 @@
                             <div class="flex items-center justify-between text-sm">
                                 <span class="text-gray-500">Département:</span>
                                 <span class="font-medium text-gray-700">Développement Web</span>
-=======
-    <div class="mx-auto max-w-5xl">
-      <div class="contenair">
-        <h2>Tableau de bord-absences</h2>
-        <div class="Card-Grid">
-        <div class="carde">
-            <div class="card-haut">
-                <div class="icons blue"><i class="fa-solid fa-file"></i></div>
-            </div>
-            <div class="card-texte">
-                <p>Absents aujourd'hui</p>
-                <h3>128</h3>
-                <p>sur 126 etudiants</p>
-            </div>
-            </div>
-            <div class="carde">
-                <div class="card-haut">
-                    <div class="icons orange"><i class="fa-solid fa-clock"></i></div>
-                </div>
-                <div class="card-texte">
-                    <p>Retards aujourd'hui</p>
-                    <h3>128</h3>
-                    <p>sur 126 etudiants</p>
-                </div>
-            </div>
-            <div class="carde">
-                <div class="card-haut">
-                    <div class="icons green"><i class="fa-solid fa-circle-check"></i></div>
-                </div>
-                <div class="card-texte">
-                    <p>Absencesjustifiées</p>
-                    <h3>128</h3>
-                    <p>ce mois</p>
-                </div>
-            </div>
-            <div class="carde">
-                <div class="card-haut">
-                    <div class="icons move"><i class="fa-solid fa-circle-xmark"></i></div>
-                </div>
-                <div class="card-texte">
-                    <p>Absences non justifiées</p>
-                    <h3>128</h3>
-                    <p>ce mois</p>
-                </div>
-            </div>
-        </div>
-       <!-- ================== les tableaux d'absences ============= -->
-        <section class="Card-Flex">
-            <div class="mains">
-            <div class="Card-Filter">
-                <input type="search" placeholder="filtrer par nom ....">
-                <select name="" id="">
-                    <option>Tous les status</option>
-                </select>
-                <select name="" id="">
-                    <option>Départements</option>
-                </select>
-                <input type="date">
-            </div>
-            <div class="table">
-                <table>
-                    <thead>
-                        <th>Nom</th>
-                        <th>Departement</th>
-                        <th>Date</th>
-                        <th>Heur</th>
-                        <th>Motif</th>
-                        <th>status</th>
-                        <th>Action</th>
-                    </thead>
-                    <tr>
-                        <td>khadiatou diallo</td>
-                        <td>Dev</td>
-                        <td>17/05/26</td>
-                        <td>08h-14h</td>
-                        <td>Rv Important</td>
-                        <td>En_cours</td>
-                        <td>
-                            <div class="actions">
-                                <button class="check"><i class="fa-solid fa-check"></i></button>
-                                <button class="close"><i class="fa-solid fa-xmark"></i></button>
                             </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>khadiatou diallo</td>
-                        <td>Dev</td>
-                        <td>17/05/26</td>
-                        <td>08h-14h</td>
-                        <td>Rv Important</td>
-                        <td>En_cours</td>
-                        <td>
-                            <div class="actions">
-                                <button class="check"><i class="fa-solid fa-check"></i></button>
-                                <button class="close"><i class="fa-solid fa-xmark"></i></button>
->>>>>>> 9c3c402b47803162c65750b2a5008080681a7427
+                            <div class="flex items-center justify-between text-sm">
+                                <span class="text-gray-500">Date absence:</span>
+                                <span class="font-medium text-gray-700">15/06/2026</span>
                             </div>
-                        </td>
-                    </tr>
-                    <tr>
-                         <td>khadiatou diallo</td>
-                         <td>Dev</td>
-                         <td>17/05/26</td>
-                         <td>08h-14h</td>
-                         <td>Rv Important</td>
-                         <td>En_cours</td>
-                         <td>
-                            <div class="actions">
-                                <button class="check"><i class="fa-solid fa-check"></i></button>
-                                <button class="close"><i class="fa-solid fa-xmark"></i></button>
+                            <div class="flex items-center justify-between text-sm">
+                                <span class="text-gray-500">Heure prévue:</span>
+                                <span class="font-medium text-gray-700">08:00</span>
                             </div>
-                        </td>
-                     </tr>
-                    <tr>
-                         <td>khadiatou diallo</td>
-                         <td>Dev</td>
-                         <td>17/05/26</td>
-                         <td>08h-14h</td>
-                         <td>Rv Important</td>
-                         <td>En_cours</td>
-                         <td>
-                            <div class="actions">
-                                <button class="check"><i class="fa-solid fa-check"></i></button>
-                                <button class="close"><i class="fa-solid fa-xmark"></i></button>
+                            <div class="flex items-center justify-between text-sm">
+                                <span class="text-gray-500">Justification:</span>
+                                <span class="inline-flex px-2 py-0.5 rounded-lg bg-orange-100 text-orange-700 text-xs">
+                                    En attente
+                                </span>
                             </div>
-                        </td>
-                     </tr>
-                    <tr>
-                         <td>khadiatou diallo</td>
-                         <td>Dev</td>
-                         <td>17/05/26</td>
-                         <td>08h-14h</td>
-                         <td>Rv Important</td>
-                         <td>En_cours</td>
-                         <td>
-                            <div class="actions">
-                                <button class="check"><i class="fa-solid fa-check"></i></button>
-                                <button class="close"><i class="fa-solid fa-xmark"></i></button>
+                        </div>
+                        
+                        <div class="flex items-center gap-2 pt-3 border-t border-gray-100">
+                            <button class="flex-1 px-3 py-2 text-blue-600 bg-blue-50 rounded-lg text-sm font-medium hover:bg-blue-100 transition-colors flex items-center justify-center gap-1">
+                                <i class="ri-eye-line"></i> Voir
+                            </button>
+                            <button class="flex-1 px-3 py-2 text-green-600 bg-green-50 rounded-lg text-sm font-medium hover:bg-green-100 transition-colors flex items-center justify-center gap-1">
+                                <i class="ri-check-line"></i> Valider
+                            </button>
+                            <button class="flex-1 px-3 py-2 text-red-600 bg-red-50 rounded-lg text-sm font-medium hover:bg-red-100 transition-colors flex items-center justify-center gap-1">
+                                <i class="ri-close-line"></i> Refuser
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Carte 2 -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-300 overflow-hidden">
+                    <div class="p-5">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="flex items-center gap-3">
+                                <img src="https://i.pravatar.cc/150?u=awa" alt="Awa Ndiaye" 
+                                    class="w-12 h-12 rounded-full object-cover border-2 border-green-100">
+                                <div>
+                                    <h3 class="font-semibold text-gray-900">Awa Ndiaye</h3>
+                                    <p class="text-xs text-gray-500">awa.ndiaye@edu.sn</p>
+                                </div>
                             </div>
-                        </td>
-                     </tr>
-                 </table>
-                 <div class="PAJINATIONS_absences">
-                    <h5>Affichage de 1 à 6 sur 30 absences</h5>
-                    <div class="button">
-                        <button><</button>
-                        <button>1</button>
-                        <button>2</button>
-                        <button>3</button>
-                        <button>4</button>
-                        <button>></button>
+                            <span class="inline-flex px-2.5 py-1 rounded-lg bg-green-100 text-green-700 font-medium text-xs">
+                                Présent
+                            </span>
+                        </div>
+                        
+                        <div class="space-y-2 mb-4">
+                            <div class="flex items-center justify-between text-sm">
+                                <span class="text-gray-500">Département:</span>
+                                <span class="font-medium text-gray-700">Data Science</span>
+                            </div>
+                            <div class="flex items-center justify-between text-sm">
+                                <span class="text-gray-500">Date absence:</span>
+                                <span class="font-medium text-gray-700">14/06/2026</span>
+                            </div>
+                            <div class="flex items-center justify-between text-sm">
+                                <span class="text-gray-500">Heure prévue:</span>
+                                <span class="font-medium text-gray-700">08:00</span>
+                            </div>
+                            <div class="flex items-center justify-between text-sm">
+                                <span class="text-gray-500">Justification:</span>
+                                <span class="inline-flex px-2 py-0.5 rounded-lg bg-green-100 text-green-700 text-xs">
+                                    Validée
+                                </span>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center gap-2 pt-3 border-t border-gray-100">
+                            <button class="flex-1 px-3 py-2 text-blue-600 bg-blue-50 rounded-lg text-sm font-medium hover:bg-blue-100 transition-colors flex items-center justify-center gap-1">
+                                <i class="ri-eye-line"></i> Voir
+                            </button>
+                            <button class="flex-1 px-3 py-2 text-gray-400 bg-gray-50 rounded-lg text-sm font-medium cursor-not-allowed flex items-center justify-center gap-1" disabled>
+                                <i class="ri-check-line"></i> Validée
+                            </button>
+                            <button class="flex-1 px-3 py-2 text-gray-400 bg-gray-50 rounded-lg text-sm font-medium cursor-not-allowed flex items-center justify-center gap-1" disabled>
+                                <i class="ri-close-line"></i> Refuser
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Carte 3 -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-300 overflow-hidden">
+                    <div class="p-5">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="flex items-center gap-3">
+                                <img src="https://i.pravatar.cc/150?u=omar" alt="Omar Diallo" 
+                                    class="w-12 h-12 rounded-full object-cover border-2 border-yellow-100">
+                                <div>
+                                    <h3 class="font-semibold text-gray-900">Omar Diallo</h3>
+                                    <p class="text-xs text-gray-500">omar.diallo@edu.sn</p>
+                                </div>
+                            </div>
+                            <span class="inline-flex px-2.5 py-1 rounded-lg bg-yellow-100 text-yellow-700 font-medium text-xs">
+                                Retard
+                            </span>
+                        </div>
+                        
+                        <div class="space-y-2 mb-4">
+                            <div class="flex items-center justify-between text-sm">
+                                <span class="text-gray-500">Département:</span>
+                                <span class="font-medium text-gray-700">Intelligence Artificielle</span>
+                            </div>
+                            <div class="flex items-center justify-between text-sm">
+                                <span class="text-gray-500">Date absence:</span>
+                                <span class="font-medium text-gray-700">13/06/2026</span>
+                            </div>
+                            <div class="flex items-center justify-between text-sm">
+                                <span class="text-gray-500">Heure prévue:</span>
+                                <span class="font-medium text-gray-700">08:00</span>
+                            </div>
+                            <div class="flex items-center justify-between text-sm">
+                                <span class="text-gray-500">Justification:</span>
+                                <span class="inline-flex px-2 py-0.5 rounded-lg bg-red-100 text-red-700 text-xs">
+                                    Non justifiée
+                                </span>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center gap-2 pt-3 border-t border-gray-100">
+                            <button class="flex-1 px-3 py-2 text-blue-600 bg-blue-50 rounded-lg text-sm font-medium hover:bg-blue-100 transition-colors flex items-center justify-center gap-1">
+                                <i class="ri-eye-line"></i> Voir
+                            </button>
+                            <button class="flex-1 px-3 py-2 text-green-600 bg-green-50 rounded-lg text-sm font-medium hover:bg-green-100 transition-colors flex items-center justify-center gap-1">
+                                <i class="ri-check-line"></i> Justifier
+                            </button>
+                            <button class="flex-1 px-3 py-2 text-orange-600 bg-orange-50 rounded-lg text-sm font-medium hover:bg-orange-100 transition-colors flex items-center justify-center gap-1">
+                                <i class="ri-mail-send-line"></i> Relancer
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Carte 4 -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-300 overflow-hidden">
+                    <div class="p-5">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="flex items-center gap-3">
+                                <img src="https://i.pravatar.cc/150?u=cheikh" alt="Cheikh Ba" 
+                                    class="w-12 h-12 rounded-full object-cover border-2 border-red-100">
+                                <div>
+                                    <h3 class="font-semibold text-gray-900">Cheikh Ba</h3>
+                                    <p class="text-xs text-gray-500">cheikh.ba@edu.sn</p>
+                                </div>
+                            </div>
+                            <span class="inline-flex px-2.5 py-1 rounded-lg bg-red-100 text-red-700 font-medium text-xs">
+                                Absent
+                            </span>
+                        </div>
+                        
+                        <div class="space-y-2 mb-4">
+                            <div class="flex items-center justify-between text-sm">
+                                <span class="text-gray-500">Département:</span>
+                                <span class="font-medium text-gray-700">Cybersécurité</span>
+                            </div>
+                            <div class="flex items-center justify-between text-sm">
+                                <span class="text-gray-500">Date absence:</span>
+                                <span class="font-medium text-gray-700">12/06/2026</span>
+                            </div>
+                            <div class="flex items-center justify-between text-sm">
+                                <span class="text-gray-500">Heure prévue:</span>
+                                <span class="font-medium text-gray-700">10:00</span>
+                            </div>
+                            <div class="flex items-center justify-between text-sm">
+                                <span class="text-gray-500">Justification:</span>
+                                <span class="inline-flex px-2 py-0.5 rounded-lg bg-red-100 text-red-700 text-xs">
+                                    Refusée
+                                </span>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center gap-2 pt-3 border-t border-gray-100">
+                            <button class="flex-1 px-3 py-2 text-blue-600 bg-blue-50 rounded-lg text-sm font-medium hover:bg-blue-100 transition-colors flex items-center justify-center gap-1">
+                                <i class="ri-eye-line"></i> Voir
+                            </button>
+                            <button class="flex-1 px-3 py-2 text-gray-400 bg-gray-50 rounded-lg text-sm font-medium cursor-not-allowed flex items-center justify-center gap-1" disabled>
+                                <i class="ri-check-line"></i> Refusée
+                            </button>
+                            <button class="flex-1 px-3 py-2 text-red-600 bg-red-50 rounded-lg text-sm font-medium hover:bg-red-100 transition-colors flex items-center justify-center gap-1">
+                                <i class="ri-delete-bin-line"></i> Supprimer
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Carte 5 -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-300 overflow-hidden">
+                    <div class="p-5">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="flex items-center gap-3">
+                                <img src="https://i.pravatar.cc/150?u=marie" alt="Marie Diop" 
+                                    class="w-12 h-12 rounded-full object-cover border-2 border-orange-100">
+                                <div>
+                                    <h3 class="font-semibold text-gray-900">Marie Diop</h3>
+                                    <p class="text-xs text-gray-500">marie.diop@edu.sn</p>
+                                </div>
+                            </div>
+                            <span class="inline-flex px-2.5 py-1 rounded-lg bg-orange-100 text-orange-700 font-medium text-xs">
+                                En attente
+                            </span>
+                        </div>
+                        
+                        <div class="space-y-2 mb-4">
+                            <div class="flex items-center justify-between text-sm">
+                                <span class="text-gray-500">Département:</span>
+                                <span class="font-medium text-gray-700">Design UX/UI</span>
+                            </div>
+                            <div class="flex items-center justify-between text-sm">
+                                <span class="text-gray-500">Date absence:</span>
+                                <span class="font-medium text-gray-700">11/06/2026</span>
+                            </div>
+                            <div class="flex items-center justify-between text-sm">
+                                <span class="text-gray-500">Heure prévue:</span>
+                                <span class="font-medium text-gray-700">14:00</span>
+                            </div>
+                            <div class="flex items-center justify-between text-sm">
+                                <span class="text-gray-500">Justification:</span>
+                                <span class="inline-flex px-2 py-0.5 rounded-lg bg-orange-100 text-orange-700 text-xs">
+                                    En attente
+                                </span>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center gap-2 pt-3 border-t border-gray-100">
+                            <button class="flex-1 px-3 py-2 text-blue-600 bg-blue-50 rounded-lg text-sm font-medium hover:bg-blue-100 transition-colors flex items-center justify-center gap-1">
+                                <i class="ri-eye-line"></i> Voir
+                            </button>
+                            <button class="flex-1 px-3 py-2 text-green-600 bg-green-50 rounded-lg text-sm font-medium hover:bg-green-100 transition-colors flex items-center justify-center gap-1">
+                                <i class="ri-check-line"></i> Valider
+                            </button>
+                            <button class="flex-1 px-3 py-2 text-red-600 bg-red-50 rounded-lg text-sm font-medium hover:bg-red-100 transition-colors flex items-center justify-center gap-1">
+                                <i class="ri-close-line"></i> Refuser
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Carte 6 -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-300 overflow-hidden">
+                    <div class="p-5">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="flex items-center gap-3">
+                                <img src="https://i.pravatar.cc/150?u=pierre" alt="Pierre Sarr" 
+                                    class="w-12 h-12 rounded-full object-cover border-2 border-green-100">
+                                <div>
+                                    <h3 class="font-semibold text-gray-900">Pierre Sarr</h3>
+                                    <p class="text-xs text-gray-500">pierre.sarr@edu.sn</p>
+                                </div>
+                            </div>
+                            <span class="inline-flex px-2.5 py-1 rounded-lg bg-green-100 text-green-700 font-medium text-xs">
+                                Validée
+                            </span>
+                        </div>
+                        
+                        <div class="space-y-2 mb-4">
+                            <div class="flex items-center justify-between text-sm">
+                                <span class="text-gray-500">Département:</span>
+                                <span class="font-medium text-gray-700">Gestion de projet</span>
+                            </div>
+                            <div class="flex items-center justify-between text-sm">
+                                <span class="text-gray-500">Date absence:</span>
+                                <span class="font-medium text-gray-700">10/06/2026</span>
+                            </div>
+                            <div class="flex items-center justify-between text-sm">
+                                <span class="text-gray-500">Heure prévue:</span>
+                                <span class="font-medium text-gray-700">09:00</span>
+                            </div>
+                            <div class="flex items-center justify-between text-sm">
+                                <span class="text-gray-500">Justification:</span>
+                                <span class="inline-flex px-2 py-0.5 rounded-lg bg-green-100 text-green-700 text-xs">
+                                    Validée
+                                </span>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center gap-2 pt-3 border-t border-gray-100">
+                            <button class="flex-1 px-3 py-2 text-blue-600 bg-blue-50 rounded-lg text-sm font-medium hover:bg-blue-100 transition-colors flex items-center justify-center gap-1">
+                                <i class="ri-eye-line"></i> Voir
+                            </button>
+                            <button class="flex-1 px-3 py-2 text-gray-400 bg-gray-50 rounded-lg text-sm font-medium cursor-not-allowed flex items-center justify-center gap-1" disabled>
+                                <i class="ri-check-line"></i> Validée
+                            </button>
+                            <button class="flex-1 px-3 py-2 text-gray-400 bg-gray-50 rounded-lg text-sm font-medium cursor-not-allowed flex items-center justify-center gap-1" disabled>
+                                <i class="ri-close-line"></i> Refuser
+                            </button>
+                        </div>
                     </div>
                  </div>
              </div>
             </div>
-            <!-- ==================right =================== -->
-             <div class="RiGht">
-                <div class="clandiriers">
-                    <input type="date">
+
+        <!-- Pagination -->
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pb-8">
+            <div class="text-sm text-gray-600">
+                Affichage de <span class="font-medium">1</span> à <span class="font-medium">6</span> sur <span class="font-medium">24</span> absences
                 </div>
-                <div class="card-absence">
-                    <div class="h4">
-                        <h4>Absents aujourd'hui</h4>
-                        <button>Voir tout</button>
+            <div class="flex items-center gap-2">
+                <button class="px-3 py-1.5 text-sm text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
+                    <i class="ri-arrow-left-s-line"></i>
+                </button>
+                <button class="px-3 py-1.5 text-sm font-medium text-blue-600 bg-blue-50 border border-blue-200 rounded-lg">1</button>
+                <button class="px-3 py-1.5 text-sm text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">2</button>
+                <button class="px-3 py-1.5 text-sm text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">3</button>
+                <button class="px-3 py-1.5 text-sm text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">4</button>
+                <button class="px-3 py-1.5 text-sm text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
+                    <i class="ri-arrow-right-s-line"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Panneau latéral justifications récentes (version cards) -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+            <div class="bg-white rounded-xl shadow-sm p-6">
+                <h3 class="text-lg font-semibold text-gray-900 mb-4">Justifications récentes</h3>
+                <div class="space-y-3">
+                    <div class="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer">
+                        <img src="https://i.pravatar.cc/150?u=moussa" alt="Moussa" class="w-10 h-10 rounded-full object-cover">
+                        <div class="flex-1 min-w-0">
+                            <p class="text-sm font-medium text-gray-900">Moussa Pouye</p>
+                            <p class="text-xs text-gray-500">Aujourd'hui 08:12</p>
+                        </div>
+                        <span class="inline-flex px-2 py-1 rounded-lg bg-orange-100 text-orange-700 font-medium text-xs">En attente</span>
                     </div>
                     <div class="h4">
                         <p>nom:jean cissé</p>
                         <button class="absent">Absent</button>
                     </div>
-                    <div class="h4">
-                        <p>nom:khadiatou telly diallo</p>
-                        <button class="absent">Absent</button>
+                    <div class="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer">
+                        <img src="https://i.pravatar.cc/150?u=marie" alt="Marie" class="w-10 h-10 rounded-full object-cover">
+                        <div class="flex-1 min-w-0">
+                            <p class="text-sm font-medium text-gray-900">Marie Diop</p>
+                            <p class="text-xs text-gray-500">14/06/2026 16:30</p>
+                        </div>
+                        <span class="inline-flex px-2 py-1 rounded-lg bg-orange-100 text-orange-700 font-medium text-xs">En attente</span>
                     </div>
                 </div>
              </div>
-        </section>
+
+            <div class="bg-white rounded-xl shadow-sm p-6">
+                <h3 class="text-lg font-semibold text-gray-900 mb-4">Historique des actions</h3>
+                <div class="space-y-3">
+                    <div class="flex items-start gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors">
+                        <div class="w-8 h-8 rounded-lg bg-blue-100 flex items-center justify-center">
+                            <i class="ri-user-line text-blue-600"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm font-medium text-gray-900">Admin Principal</p>
+                            <p class="text-sm text-gray-600">Justification validée</p>
+                            <p class="text-xs text-gray-500 mt-0.5">15/06/2026 09:12</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors">
+                        <div class="w-8 h-8 rounded-lg bg-red-100 flex items-center justify-center">
+                            <i class="ri-user-line text-red-600"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm font-medium text-gray-900">Admin Principal</p>
+                            <p class="text-sm text-gray-600">Justification refusée</p>
+                            <p class="text-xs text-gray-500 mt-0.5">15/06/2026 08:45</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
       </div>
     </div>
 </main>

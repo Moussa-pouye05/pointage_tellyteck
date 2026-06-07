@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\Cohorte;
 use App\Models\CohorteDept;
 use App\Models\User;
 
@@ -153,6 +154,14 @@ class AuthController
     {
         $user = $this->requireRole('admin');
         $this->render('admin/ferie', 'Jours fériés', ['user' => $user]);
+    }
+    public function cohorteDept(): void
+    {
+        $user = $this->requireRole('admin');
+        $departements = (new CohorteDept())->allActive();
+        $cohortes = (new Cohorte())->findAll();
+
+        $this->render('admin/cohorte', 'Cohorte et departement', ['user' => $user, 'departements' => $departements, 'cohortes' => $cohortes]);
     }
 
     public function notifications(): void
