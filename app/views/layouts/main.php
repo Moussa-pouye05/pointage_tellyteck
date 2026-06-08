@@ -18,14 +18,19 @@
 <body class="p-0 m-0">
 
     <?php if (!empty($_SESSION['flash']['success'])): ?>
-        <div class="fixed left-1/2 top-4 z-50 w-[calc(100%-2rem)] max-w-xl -translate-x-1/2 rounded-lg border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-700 shadow">
+        <div class="fixed left-[60%] top-4 z-50 w-[calc(100%-2rem)] max-w-xl -translate-x-1/2 rounded-lg border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-700 shadow">
             <?= htmlspecialchars($_SESSION['flash']['success']) ?>
         </div>
         <?php unset($_SESSION['flash']['success']); ?>
     <?php endif; ?>
 
-
-
+    <?php if (!empty($_SESSION['flash']['error'])): ?>
+        <div class="fixed left-[60%] top-4 z-50 w-[calc(100%-2rem)] max-w-xl -translate-x-1/2 rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700 shadow">
+            <?= htmlspecialchars($_SESSION['flash']['error']) ?>
+        </div>
+        <?php unset($_SESSION['flash']['error']); ?>
+    <?php endif; ?>
+    
 
     <?php if (!empty($_SESSION['flash']['reset_link'])): ?>
 
@@ -39,9 +44,18 @@
     <?php endif; ?>
 
     <?= $content ?>
+    
+    <script>
+        window.APP_BASE_URL = "<?= BASE_URL ?>";
+    </script>
+    
     <script src="<?= ASSET_URL ?>/js/navbar.js"></script>
     <script src="<?= ASSET_URL ?>/js/conge_etudiant.js"></script>
     <script src="<?= ASSET_URL ?>/js/qrcode_admin.js"></script>
+    <script src="<?= ASSET_URL ?>/js/qrcode_etudiant.js"></script>
+    <script src="<?= ASSET_URL ?>/js/utilisateur.js"></script>
+  
+    <script src="<?= ASSET_URL ?>/js/cohorte_department.js"></script>
 
 </body>
 </html>

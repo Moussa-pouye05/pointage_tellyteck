@@ -64,6 +64,13 @@ $items = [
         'match' => ['/qrcode'],
     ],
     [
+        'label' => 'Cohorte & Dept',
+        'href' => BASE_URL . '/cohorte',
+        'icon' => 'ti-calendar-event',
+        'roles' => ['admin'],
+        'match' => ['/cohorte'],
+    ],
+    [
         'label' => 'Jours fériés',
         'href' => BASE_URL . '/feries',
         'icon' => 'ti-calendar-event',
