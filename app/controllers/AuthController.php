@@ -140,7 +140,8 @@ class AuthController
     public function utilisateurs(): void
     {
         $user = $this->requireRole('admin');
-        $this->render('admin/utilisateurs', 'Utilisateurs', ['user' => $user]);
+        $cohortes = (new Cohorte())->findActive();
+        $this->render('admin/utilisateurs', 'Utilisateurs', ['user' => $user, 'cohortes' => $cohortes]);
     }
 
     public function qrcode(): void
@@ -289,6 +290,7 @@ class AuthController
         }
 
         $this->users()->updatePassword((int)$user['id'], $password);
+        $this->users()->activate((int)$user['id']);
         $this->flash('success', 'Mot de passe réinitialisé. Vous pouvez vous connecter.');
         $this->redirect('/');
     }

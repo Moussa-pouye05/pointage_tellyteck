@@ -7,6 +7,10 @@ namespace Composer\Autoload;
 class ComposerStaticInite45f76c730cdff495d8c575941f95a8d
 {
     public static $prefixLengthsPsr4 = array (
+        'P' => 
+        array (
+            'PHPMailer\\PHPMailer\\' => 20,
+        ),
         'H' => 
         array (
             'Hp\\PointageTellyteck\\' => 21,
@@ -22,6 +26,10 @@ class ComposerStaticInite45f76c730cdff495d8c575941f95a8d
     );
 
     public static $prefixDirsPsr4 = array (
+        'PHPMailer\\PHPMailer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
+        ),
         'Hp\\PointageTellyteck\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
