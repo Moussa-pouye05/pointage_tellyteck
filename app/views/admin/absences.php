@@ -1,6 +1,157 @@
 <?php require_once __DIR__ . "/../partials/navbar.php"?>
 <?php require_once __DIR__ . "/../partials/header.php"?>
 <main class="min-h-screen ml-6 md:ml-60 mt-16">
+
+    <div class="mx-auto max-w-5xl">
+      <div class="contenair">
+        <h2>Tableau de bord-absences</h2>
+        <div class="Card-Grid">
+        <div class="carde">
+            <div class="card-haut">
+                <div class="icons blue"><i class="fa-solid fa-file"></i></div>
+            </div>
+            <div class="card-texte">
+                <p>Absents aujourd'hui</p>
+                <h3>128</h3>
+                <p>sur 126 etudiants</p>
+            </div>
+            </div>
+            <div class="carde">
+                <div class="card-haut">
+                    <div class="icons orange"><i class="fa-solid fa-clock"></i></div>
+                </div>
+                <div class="card-texte">
+                    <p>Retards aujourd'hui</p>
+                    <h3>128</h3>
+                    <p>sur 126 etudiants</p>
+                </div>
+            </div>
+            <div class="carde">
+                <div class="card-haut">
+                    <div class="icons green"><i class="fa-solid fa-circle-check"></i></div>
+                </div>
+                <div class="card-texte">
+                    <p>Absencesjustifiées</p>
+                    <h3>128</h3>
+                    <p>ce mois</p>
+                </div>
+            </div>
+            <div class="carde">
+                <div class="card-haut">
+                    <div class="icons move"><i class="fa-solid fa-circle-xmark"></i></div>
+                </div>
+                <div class="card-texte">
+                    <p>Absences non justifiées</p>
+                    <h3>128</h3>
+                    <p>ce mois</p>
+                </div>
+            </div>
+        </div>
+       <!-- ================== les tableaux d'absences ============= -->
+        <section class="Card-Flex">
+            <div class="mains">
+            <div class="Card-Filter">
+                <input type="search" placeholder="filtrer par nom ....">
+                <select name="" id="">
+                    <option>Tous les status</option>
+                </select>
+                <select name="" id="">
+                    <option>Départements</option>
+                </select>
+                <input type="date">
+            </div>
+            <div class="table">
+                <table>
+                    <thead>
+                        <th>Nom</th>
+                        <th>Departement</th>
+                        <th>Date</th>
+                        <th>Heur</th>
+                        <th>Motif</th>
+                        <th>status</th>
+                        <th>Action</th>
+                    </thead>
+                    <tr>
+                        <td>khadiatou diallo</td>
+                        <td>Dev</td>
+                        <td>17/05/26</td>
+                        <td>08h-14h</td>
+                        <td>Rv Important</td>
+                        <td>En_cours</td>
+                        <td>
+                            <div class="actions">
+                                <button class="check"><i class="fa-solid fa-check"></i></button>
+                                <button class="close"><i class="fa-solid fa-xmark"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>khadiatou diallo</td>
+                        <td>Dev</td>
+                        <td>17/05/26</td>
+                        <td>08h-14h</td>
+                        <td>Rv Important</td>
+                        <td>En_cours</td>
+                        <td>
+                            <div class="actions">
+                                <button class="check"><i class="fa-solid fa-check"></i></button>
+                                <button class="close"><i class="fa-solid fa-xmark"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                         <td>khadiatou diallo</td>
+                         <td>Dev</td>
+                         <td>17/05/26</td>
+                         <td>08h-14h</td>
+                         <td>Rv Important</td>
+                         <td>En_cours</td>
+                         <td>
+                            <div class="actions">
+                                <button class="check"><i class="fa-solid fa-check"></i></button>
+                                <button class="close"><i class="fa-solid fa-xmark"></i></button>
+                            </div>
+                        </td>
+                     </tr>
+                    <tr>
+                         <td>khadiatou diallo</td>
+                         <td>Dev</td>
+                         <td>17/05/26</td>
+                         <td>08h-14h</td>
+                         <td>Rv Important</td>
+                         <td>En_cours</td>
+                         <td>
+                            <div class="actions">
+                                <button class="check"><i class="fa-solid fa-check"></i></button>
+                                <button class="close"><i class="fa-solid fa-xmark"></i></button>
+                            </div>
+                        </td>
+                     </tr>
+                    <tr>
+                         <td>khadiatou diallo</td>
+                         <td>Dev</td>
+                         <td>17/05/26</td>
+                         <td>08h-14h</td>
+                         <td>Rv Important</td>
+                         <td>En_cours</td>
+                         <td>
+                            <div class="actions">
+                                <button class="check"><i class="fa-solid fa-check"></i></button>
+                                <button class="close"><i class="fa-solid fa-xmark"></i></button>
+                            </div>
+                        </td>
+                     </tr>
+                 </table>
+                 <div class="PAJINATIONS_absences">
+                    <h5>Affichage de 1 à 6 sur 30 absences</h5>
+                    <div class="button">
+                        <button><</button>
+                        <button>1</button>
+                        <button>2</button>
+                        <button>3</button>
+                        <button>4</button>
+                        <button>></button>
+
     <div class="mx-auto max-w-7xl px-4 sm:px-6">
         <!-- SECTION 1 : Header de page -->
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
@@ -443,83 +594,32 @@
                                 <i class="ri-close-line"></i> Refuser
                             </button>
                         </div>
+
                     </div>
                  </div>
              </div>
             </div>
-
-        <!-- Pagination -->
-        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pb-8">
-            <div class="text-sm text-gray-600">
-                Affichage de <span class="font-medium">1</span> à <span class="font-medium">6</span> sur <span class="font-medium">24</span> absences
+            <!-- ==================right =================== -->
+             <div class="RiGht">
+                <div class="clandiriers">
+                    <input type="date">
                 </div>
-            <div class="flex items-center gap-2">
-                <button class="px-3 py-1.5 text-sm text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
-                    <i class="ri-arrow-left-s-line"></i>
-                </button>
-                <button class="px-3 py-1.5 text-sm font-medium text-blue-600 bg-blue-50 border border-blue-200 rounded-lg">1</button>
-                <button class="px-3 py-1.5 text-sm text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">2</button>
-                <button class="px-3 py-1.5 text-sm text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">3</button>
-                <button class="px-3 py-1.5 text-sm text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">4</button>
-                <button class="px-3 py-1.5 text-sm text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
-                    <i class="ri-arrow-right-s-line"></i>
-                </button>
-            </div>
-        </div>
-
-        <!-- Panneau latéral justifications récentes (version cards) -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-            <div class="bg-white rounded-xl shadow-sm p-6">
-                <h3 class="text-lg font-semibold text-gray-900 mb-4">Justifications récentes</h3>
-                <div class="space-y-3">
-                    <div class="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer">
-                        <img src="https://i.pravatar.cc/150?u=moussa" alt="Moussa" class="w-10 h-10 rounded-full object-cover">
-                        <div class="flex-1 min-w-0">
-                            <p class="text-sm font-medium text-gray-900">Moussa Pouye</p>
-                            <p class="text-xs text-gray-500">Aujourd'hui 08:12</p>
-                        </div>
-                        <span class="inline-flex px-2 py-1 rounded-lg bg-orange-100 text-orange-700 font-medium text-xs">En attente</span>
+                <div class="card-absence">
+                    <div class="h4">
+                        <h4>Absents aujourd'hui</h4>
+                        <button>Voir tout</button>
                     </div>
                     <div class="h4">
                         <p>nom:jean cissé</p>
                         <button class="absent">Absent</button>
                     </div>
-                    <div class="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer">
-                        <img src="https://i.pravatar.cc/150?u=marie" alt="Marie" class="w-10 h-10 rounded-full object-cover">
-                        <div class="flex-1 min-w-0">
-                            <p class="text-sm font-medium text-gray-900">Marie Diop</p>
-                            <p class="text-xs text-gray-500">14/06/2026 16:30</p>
-                        </div>
-                        <span class="inline-flex px-2 py-1 rounded-lg bg-orange-100 text-orange-700 font-medium text-xs">En attente</span>
+                    <div class="h4">
+                        <p>nom:khadiatou telly diallo</p>
+                        <button class="absent">Absent</button>
                     </div>
                 </div>
              </div>
-
-            <div class="bg-white rounded-xl shadow-sm p-6">
-                <h3 class="text-lg font-semibold text-gray-900 mb-4">Historique des actions</h3>
-                <div class="space-y-3">
-                    <div class="flex items-start gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors">
-                        <div class="w-8 h-8 rounded-lg bg-blue-100 flex items-center justify-center">
-                            <i class="ri-user-line text-blue-600"></i>
-                        </div>
-                        <div>
-                            <p class="text-sm font-medium text-gray-900">Admin Principal</p>
-                            <p class="text-sm text-gray-600">Justification validée</p>
-                            <p class="text-xs text-gray-500 mt-0.5">15/06/2026 09:12</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors">
-                        <div class="w-8 h-8 rounded-lg bg-red-100 flex items-center justify-center">
-                            <i class="ri-user-line text-red-600"></i>
-                        </div>
-                        <div>
-                            <p class="text-sm font-medium text-gray-900">Admin Principal</p>
-                            <p class="text-sm text-gray-600">Justification refusée</p>
-                            <p class="text-xs text-gray-500 mt-0.5">15/06/2026 08:45</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        </section>
       </div>
     </div>
 </main>

@@ -78,7 +78,7 @@ class AuthController
 
         if ($this->users()->findByEmail($data['email'])) {
             $this->flash('error', 'Cet email est déjà utilisé.');
-            $this->redirect('/register-form');
+            $this->redirect('/register-form');  
         }
 
         $this->users()->create($data);
