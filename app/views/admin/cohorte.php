@@ -34,7 +34,7 @@ $csrfToken = $_SESSION['csrf_token'] ?? '';
             $activeCohortes = count(array_filter($cohortes, fn($cohorte) => (int)$cohorte['is_active'] === 1));
         ?>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-            <div class="bg-white rounded-xl shadow-sm p-5 hover:shadow-md transition-shadow">
+            <div class="bg-white rounded-xl shadow-sm p-5 hover:shadow-md transition-shadow border-l-4 border-blue-500">
                 <div class="flex items-center justify-between">
                     <div>
                         <p class="text-sm text-gray-500 font-medium">Départements actifs</p>
@@ -45,7 +45,7 @@ $csrfToken = $_SESSION['csrf_token'] ?? '';
                     </div>
                 </div>
             </div>
-            <div class="bg-white rounded-xl shadow-sm p-5 hover:shadow-md transition-shadow">
+            <div class="bg-white rounded-xl shadow-sm p-5 hover:shadow-md transition-shadow border-l-4 border-purple-500">
                 <div class="flex items-center justify-between">
                     <div>
                         <p class="text-sm text-gray-500 font-medium">Total cohortes</p>

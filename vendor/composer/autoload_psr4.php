@@ -6,6 +6,7 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'PHPMailer\\PHPMailer\\' => array($vendorDir . '/phpmailer/phpmailer/src'),
     'Hp\\PointageTellyteck\\' => array($baseDir . '/src'),
     'Config\\' => array($baseDir . '/config'),
     'App\\' => array($baseDir . '/app'),

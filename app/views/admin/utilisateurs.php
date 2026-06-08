@@ -1,5 +1,9 @@
 <?php require_once __DIR__ . "/../partials/navbar.php"?>
 <?php require_once __DIR__ . "/../partials/header.php"?>
+<?php
+$cohortes = $cohortes ?? [];
+$csrfToken = $csrfToken ?? ($_SESSION['csrf_token'] ?? '');
+?>
 
 <main class="min-h-screen ml-6 md:ml-[260px] mt-16 bg-gradient-to-br from-gray-50 via-white to-gray-100">
 <div class="p-3 md:p-4">
@@ -99,12 +103,12 @@
             </select>
         </div>
         <div class="w-full lg:w-1/5">
-            <label class="block text-xs font-medium text-gray-600 mb-1">Rôle</label>
+            <label class="block text-xs font-medium text-gray-600 mb-1">Cohorte</label>
             <select class="w-full px-3 py-1.5 text-sm border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none bg-gray-50 focus:bg-white transition">
                 <option value="">Tous</option>
-                <option value="etudiant">Étudiant</option>
-                <option value="delegue">Délégué</option>
-                <option value="responsable">Responsable</option>
+                <option value="etudiant">Cohorte1</option>
+                <option value="delegue">Cohorte2</option>
+                
             </select>
         </div>
         <div class="w-full lg:w-1/5">
@@ -124,11 +128,13 @@
     </div>
 </div>
 
-<!-- SECTION 4 : Tableau principal compact -->
+<!-- SECTION 4 : Liste des étudiants en CARDS -->
 <div class="bg-white rounded-lg shadow-sm border border-gray-100 mb-5 overflow-hidden">
-    <div class="p-3 border-b border-gray-100 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
+    <div class="p-4 border-b border-gray-100 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
         <h2 class="text-sm font-bold text-gray-700 flex items-center gap-2">
-            <i class="ti ti-users text-blue-500"></i>
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
             Liste des étudiants
         </h2>
         <span class="text-xs text-gray-500">
@@ -136,106 +142,195 @@
         </span>
     </div>
     
-    <!-- Tableau Desktop -->
-    <div class="hidden md:block overflow-x-auto">
-        <table class="w-full">
-            <thead class="bg-gray-50 border-b border-gray-100">
-                <tr>
-                    <th class="px-4 py-2 text-left text-xs font-semibold text-gray-500 uppercase">Étudiant</th>
-                    <th class="px-4 py-2 text-left text-xs font-semibold text-gray-500 uppercase">Téléphone</th>
-                    <th class="px-4 py-2 text-left text-xs font-semibold text-gray-500 uppercase">Département</th>
-                    <th class="px-4 py-2 text-left text-xs font-semibold text-gray-500 uppercase">Rôle</th>
-                    <th class="px-4 py-2 text-left text-xs font-semibold text-gray-500 uppercase">Statut</th>
-                    <th class="px-4 py-2 text-right text-xs font-semibold text-gray-500 uppercase">Actions</th>
-                </tr>
-            </thead>
-            <tbody class="divide-y divide-gray-100" id="studentTableBody">
-                <tr class="hover:bg-gray-50 transition group">
-                    <td class="px-4 py-2">
-                        <div class="flex items-center gap-2">
-                            <img src="https://i.pravatar.cc/150?u=1" alt="Photo" class="w-8 h-8 rounded-full object-cover border border-gray-200">
-                            <div>
-                                <p class="text-sm font-semibold text-gray-800">Aminata Diop</p>
-                                <p class="text-xs text-gray-500">aminata.diop@edu.sn</p>
-                            </div>
+    <!-- Grille de cartes responsive -->
+    <div class="p-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <!-- Carte étudiant 1 - Actif -->
+            <div class="bg-white rounded-xl border border-gray-200 hover:shadow-lg transition-all duration-300 overflow-hidden group">
+                <div class="p-4">
+                    <div class="flex items-center gap-3 mb-3">
+                        <img src="https://i.pravatar.cc/150?u=1" alt="Photo" class="w-12 h-12 rounded-full object-cover border-2 border-blue-100 group-hover:border-blue-300 transition-colors">
+                        <div class="flex-1 min-w-0">
+                            <h3 class="font-semibold text-sm text-gray-800 truncate">Aminata Diop</h3>
+                            <p class="text-xs text-gray-500 truncate">aminata.diop@edu.sn</p>
                         </div>
-                    </td>
-                    <td class="px-4 py-2 text-xs text-gray-600">+221 77 123 45 67</td>
-                    <td class="px-4 py-2 text-xs text-gray-600">Informatique</td>
-                    <td class="px-4 py-2 text-xs text-gray-600">Étudiant</td>
-                    <td class="px-4 py-2">
-                        <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-700">Actif</span>
-                    </td>
-                    <td class="px-4 py-2 text-right">
-                        <div class="flex items-center justify-end gap-1">
-                            <button onclick="document.getElementById('modalDetail').classList.remove('hidden')" class="p-1 text-gray-500 hover:text-blue-600 hover:bg-blue-50 rounded transition" title="Voir">
-                                <i class="ti ti-eye text-sm"></i>
-                            </button>
-                            <button onclick="document.getElementById('modalEditStudent').classList.remove('hidden')" class="p-1 text-gray-500 hover:text-orange-600 hover:bg-orange-50 rounded transition" title="Modifier">
-                                <i class="ti ti-edit text-sm"></i>
-                            </button>
-                            <button onclick="document.getElementById('modalQRDetail').classList.remove('hidden')" class="p-1 text-gray-500 hover:text-blue-600 hover:bg-blue-50 rounded transition" title="QR Code">
-                                <i class="ti ti-qrcode text-sm"></i>
-                            </button>
-                            <button onclick="confirmDeactivation('Aminata Diop')" class="p-1 text-gray-500 hover:text-red-600 hover:bg-red-50 rounded transition" title="Désactiver">
-                                <i class="ti ti-lock text-sm"></i>
-                            </button>
+                    </div>
+                    
+                    <div class="space-y-2 mb-3">
+                        <div class="flex items-center justify-between text-xs">
+                            <span class="text-gray-500">Téléphone:</span>
+                            <span class="font-medium text-gray-700">+221 77 123 45 67</span>
                         </div>
-                    </td>
-                </tr>
-                <tr class="hover:bg-gray-50 transition group">
-                    <td class="px-4 py-2">
-                        <div class="flex items-center gap-2">
-                            <img src="https://i.pravatar.cc/150?u=2" alt="Photo" class="w-8 h-8 rounded-full object-cover border border-gray-200">
-                            <div>
-                                <p class="text-sm font-semibold text-gray-800">Moussa Ndiaye</p>
-                                <p class="text-xs text-gray-500">moussa.ndiaye@edu.sn</p>
-                            </div>
+                        <div class="flex items-center justify-between text-xs">
+                            <span class="text-gray-500">Département:</span>
+                            <span class="font-medium text-gray-700">Informatique</span>
                         </div>
-                    </td>
-                    <td class="px-4 py-2 text-xs text-gray-600">+221 78 987 65 43</td>
-                    <td class="px-4 py-2 text-xs text-gray-600">Gestion</td>
-                    <td class="px-4 py-2 text-xs text-gray-600">Délégué</td>
-                    <td class="px-4 py-2">
-                        <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-700">Désactivé</span>
-                    </td>
-                    <td class="px-4 py-2 text-right">
-                        <div class="flex items-center justify-end gap-1">
-                            <button class="p-1 text-gray-500 hover:text-blue-600 hover:bg-blue-50 rounded transition"><i class="ti ti-eye text-sm"></i></button>
-                            <button class="p-1 text-gray-500 hover:text-orange-600 hover:bg-orange-50 rounded transition"><i class="ti ti-edit text-sm"></i></button>
-                            <button class="p-1 text-gray-500 hover:text-blue-600 hover:bg-blue-50 rounded transition"><i class="ti ti-qrcode text-sm"></i></button>
-                            <button onclick="confirmDeactivation('Aminata Diop')" class="p-1 text-gray-500 hover:text-red-600 hover:bg-red-50 rounded transition" title="Désactiver">
-                                    <i class="ti ti-lock text-sm"></i>
-                            </button>
+                        <div class="flex items-center justify-between text-xs">
+                            <span class="text-gray-500">Cohorte:</span>
+                            <span class="font-medium text-gray-700">Cohorte 2025A</span>
                         </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <!-- Vue Mobile compacte -->
-    <div class="md:hidden divide-y divide-gray-100">
-        <div class="p-3 hover:bg-gray-50 transition">
-            <div class="flex items-start gap-2 mb-2">
-                <img src="https://i.pravatar.cc/150?u=1" class="w-10 h-10 rounded-full object-cover border border-gray-200">
-                <div class="flex-1">
-                    <h3 class="font-semibold text-sm text-gray-800">Aminata Diop</h3>
-                    <p class="text-xs text-gray-500">aminata.diop@edu.sn</p>
-                    <p class="text-xs text-gray-600 mt-1">📞 +221 77 123 45 67</p>
+                        <div class="flex items-center justify-between text-xs">
+                            <span class="text-gray-500">Statut:</span>
+                            <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-700">Actif</span>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center gap-2 pt-3 border-t border-gray-100">
+                        <button onclick="openStudentDetailModal('Aminata Diop')" class="flex-1 py-1.5 text-blue-600 bg-blue-50 rounded-lg text-xs font-medium hover:bg-blue-100 transition-colors flex items-center justify-center gap-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
+                            Voir
+                        </button>
+                        <button onclick="openEditStudentModal('Aminata Diop')" class="flex-1 py-1.5 text-orange-600 bg-orange-50 rounded-lg text-xs font-medium hover:bg-orange-100 transition-colors flex items-center justify-center gap-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg>
+                            Modifier
+                        </button>
+                        <button onclick="toggleStudentStatus('Aminata Diop', 'desactiver')" class="flex-1 py-1.5 text-red-600 bg-red-50 rounded-lg text-xs font-medium hover:bg-red-100 transition-colors flex items-center justify-center gap-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" /></svg>
+                            Désactiver
+                        </button>
+                    </div>
                 </div>
-                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-700">Actif</span>
             </div>
-            <div class="flex gap-2 mt-2">
-                <button class="flex-1 py-1.5 bg-white border border-gray-200 rounded-lg text-xs font-medium text-gray-700 hover:bg-gray-50 flex items-center justify-center gap-1">
-                    <i class="ti ti-eye text-sm"></i> Voir
-                </button>
-                <button class="flex-1 py-1.5 bg-white border border-gray-200 rounded-lg text-xs font-medium text-gray-700 hover:bg-gray-50 flex items-center justify-center gap-1">
-                    <i class="ti ti-edit text-sm"></i> Modifier
-                </button>
-                <button class="flex-1 py-1.5 bg-blue-600 text-white rounded-lg text-xs font-medium hover:bg-blue-700 flex items-center justify-center gap-1">
-                    <i class="ti ti-qrcode text-sm"></i> QR
-                </button>
+
+            <!-- Carte étudiant 2 - Désactivé -->
+            <div class="bg-white rounded-xl border border-gray-200 hover:shadow-lg transition-all duration-300 overflow-hidden group opacity-75">
+                <div class="p-4">
+                    <div class="flex items-center gap-3 mb-3">
+                        <img src="https://i.pravatar.cc/150?u=2" alt="Photo" class="w-12 h-12 rounded-full object-cover border-2 border-gray-200 group-hover:border-gray-300 transition-colors">
+                        <div class="flex-1 min-w-0">
+                            <h3 class="font-semibold text-sm text-gray-800 truncate">Moussa Ndiaye</h3>
+                            <p class="text-xs text-gray-500 truncate">moussa.ndiaye@edu.sn</p>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-2 mb-3">
+                        <div class="flex items-center justify-between text-xs">
+                            <span class="text-gray-500">Téléphone:</span>
+                            <span class="font-medium text-gray-700">+221 78 987 65 43</span>
+                        </div>
+                        <div class="flex items-center justify-between text-xs">
+                            <span class="text-gray-500">Département:</span>
+                            <span class="font-medium text-gray-700">Gestion</span>
+                        </div>
+                        <div class="flex items-center justify-between text-xs">
+                            <span class="text-gray-500">Cohorte:</span>
+                            <span class="font-medium text-gray-700">Cohorte 2025B</span>
+                        </div>
+                        <div class="flex items-center justify-between text-xs">
+                            <span class="text-gray-500">Statut:</span>
+                            <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-700">Désactivé</span>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center gap-2 pt-3 border-t border-gray-100">
+                        <button onclick="openStudentDetailModal('Moussa Ndiaye')" class="flex-1 py-1.5 text-blue-600 bg-blue-50 rounded-lg text-xs font-medium hover:bg-blue-100 transition-colors flex items-center justify-center gap-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
+                            Voir
+                        </button>
+                        <button onclick="openEditStudentModal('Moussa Ndiaye')" class="flex-1 py-1.5 text-orange-600 bg-orange-50 rounded-lg text-xs font-medium hover:bg-orange-100 transition-colors flex items-center justify-center gap-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg>
+                            Modifier
+                        </button>
+                        <button onclick="toggleStudentStatus('Moussa Ndiaye', 'activer')" class="flex-1 py-1.5 text-green-600 bg-green-50 rounded-lg text-xs font-medium hover:bg-green-100 transition-colors flex items-center justify-center gap-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+                            Activer
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carte étudiant 3 - Actif -->
+            <div class="bg-white rounded-xl border border-gray-200 hover:shadow-lg transition-all duration-300 overflow-hidden group">
+                <div class="p-4">
+                    <div class="flex items-center gap-3 mb-3">
+                        <img src="https://i.pravatar.cc/150?u=3" alt="Photo" class="w-12 h-12 rounded-full object-cover border-2 border-blue-100 group-hover:border-blue-300 transition-colors">
+                        <div class="flex-1 min-w-0">
+                            <h3 class="font-semibold text-sm text-gray-800 truncate">Fatou Sow</h3>
+                            <p class="text-xs text-gray-500 truncate">fatou.sow@edu.sn</p>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-2 mb-3">
+                        <div class="flex items-center justify-between text-xs">
+                            <span class="text-gray-500">Téléphone:</span>
+                            <span class="font-medium text-gray-700">+221 76 543 21 09</span>
+                        </div>
+                        <div class="flex items-center justify-between text-xs">
+                            <span class="text-gray-500">Département:</span>
+                            <span class="font-medium text-gray-700">Informatique</span>
+                        </div>
+                        <div class="flex items-center justify-between text-xs">
+                            <span class="text-gray-500">Cohorte:</span>
+                            <span class="font-medium text-gray-700">Cohorte 2025A</span>
+                        </div>
+                        <div class="flex items-center justify-between text-xs">
+                            <span class="text-gray-500">Statut:</span>
+                            <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-700">Actif</span>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center gap-2 pt-3 border-t border-gray-100">
+                        <button onclick="openStudentDetailModal('Fatou Sow')" class="flex-1 py-1.5 text-blue-600 bg-blue-50 rounded-lg text-xs font-medium hover:bg-blue-100 transition-colors flex items-center justify-center gap-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
+                            Voir
+                        </button>
+                        <button onclick="openEditStudentModal('Fatou Sow')" class="flex-1 py-1.5 text-orange-600 bg-orange-50 rounded-lg text-xs font-medium hover:bg-orange-100 transition-colors flex items-center justify-center gap-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg>
+                            Modifier
+                        </button>
+                        <button onclick="toggleStudentStatus('Fatou Sow', 'desactiver')" class="flex-1 py-1.5 text-red-600 bg-red-50 rounded-lg text-xs font-medium hover:bg-red-100 transition-colors flex items-center justify-center gap-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" /></svg>
+                            Désactiver
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carte étudiant 4 - En congé -->
+            <div class="bg-white rounded-xl border border-gray-200 hover:shadow-lg transition-all duration-300 overflow-hidden group">
+                <div class="p-4">
+                    <div class="flex items-center gap-3 mb-3">
+                        <img src="https://i.pravatar.cc/150?u=5" alt="Photo" class="w-12 h-12 rounded-full object-cover border-2 border-orange-100 group-hover:border-orange-300 transition-colors">
+                        <div class="flex-1 min-w-0">
+                            <h3 class="font-semibold text-sm text-gray-800 truncate">Mariama Ba</h3>
+                            <p class="text-xs text-gray-500 truncate">mariama.ba@edu.sn</p>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-2 mb-3">
+                        <div class="flex items-center justify-between text-xs">
+                            <span class="text-gray-500">Téléphone:</span>
+                            <span class="font-medium text-gray-700">+221 77 111 22 33</span>
+                        </div>
+                        <div class="flex items-center justify-between text-xs">
+                            <span class="text-gray-500">Département:</span>
+                            <span class="font-medium text-gray-700">Marketing</span>
+                        </div>
+                        <div class="flex items-center justify-between text-xs">
+                            <span class="text-gray-500">Cohorte:</span>
+                            <span class="font-medium text-gray-700">Cohorte 2025B</span>
+                        </div>
+                        <div class="flex items-center justify-between text-xs">
+                            <span class="text-gray-500">Statut:</span>
+                            <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-orange-100 text-orange-700">En congé</span>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center gap-2 pt-3 border-t border-gray-100">
+                        <button onclick="openStudentDetailModal('Mariama Ba')" class="flex-1 py-1.5 text-blue-600 bg-blue-50 rounded-lg text-xs font-medium hover:bg-blue-100 transition-colors flex items-center justify-center gap-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
+                            Voir
+                        </button>
+                        <button onclick="openEditStudentModal('Mariama Ba')" class="flex-1 py-1.5 text-orange-600 bg-orange-50 rounded-lg text-xs font-medium hover:bg-orange-100 transition-colors flex items-center justify-center gap-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg>
+                            Modifier
+                        </button>
+                        <button onclick="toggleStudentStatus('Mariama Ba', 'desactiver')" class="flex-1 py-1.5 text-red-600 bg-red-50 rounded-lg text-xs font-medium hover:bg-red-100 transition-colors flex items-center justify-center gap-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" /></svg>
+                            Désactiver
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -244,22 +339,23 @@
 <!-- SECTION 5 : Pagination compacte -->
 <div class="flex flex-col sm:flex-row items-center justify-between gap-3 mb-5">
     <p class="text-xs text-gray-500">
-        Affichage de <span class="font-semibold text-gray-700">1</span> à <span class="font-semibold text-gray-700">20</span> sur <span class="font-semibold text-gray-700">254</span> étudiants
+        Affichage de <span class="font-semibold text-gray-700">1</span> à <span class="font-semibold text-gray-700">4</span> sur <span class="font-semibold text-gray-700">254</span> étudiants
     </p>
     <nav class="flex items-center gap-1">
         <button class="px-2 py-1 border border-gray-200 rounded-lg text-xs text-gray-600 hover:bg-gray-50">
-            <i class="ti ti-chevron-left text-sm"></i>
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" /></svg>
         </button>
-        <button class="px-2 py-1 bg-blue-600 text-white rounded-lg text-xs font-medium">1</button>
-        <button class="px-2 py-1 border border-gray-200 rounded-lg text-xs text-gray-600 hover:bg-gray-50">2</button>
-        <button class="px-2 py-1 border border-gray-200 rounded-lg text-xs text-gray-600 hover:bg-gray-50">3</button>
-        <button class="px-2 py-1 border border-gray-200 rounded-lg text-xs text-gray-600 hover:bg-gray-50">4</button>
-        <button class="px-2 py-1 border border-gray-200 rounded-lg text-xs text-gray-600 hover:bg-gray-50">5</button>
+        <button class="px-3 py-1 bg-blue-600 text-white rounded-lg text-xs font-medium">1</button>
+        <button class="px-3 py-1 border border-gray-200 rounded-lg text-xs text-gray-600 hover:bg-gray-50">2</button>
+        <button class="px-3 py-1 border border-gray-200 rounded-lg text-xs text-gray-600 hover:bg-gray-50">3</button>
+        <button class="px-3 py-1 border border-gray-200 rounded-lg text-xs text-gray-600 hover:bg-gray-50">4</button>
+        <button class="px-3 py-1 border border-gray-200 rounded-lg text-xs text-gray-600 hover:bg-gray-50">5</button>
         <button class="px-2 py-1 border border-gray-200 rounded-lg text-xs text-gray-600 hover:bg-gray-50">
-            <i class="ti ti-chevron-right text-sm"></i>
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
         </button>
     </nav>
 </div>
+
 
 <!-- ========================================== -->
 <!-- MODALS COMPACTES -->
@@ -275,66 +371,61 @@
                 <div class="flex items-center justify-between mb-4">
                     <h3 class="text-lg font-bold text-gray-800">Nouvel étudiant</h3>
                     <button onclick="document.getElementById('modalAddStudent').classList.add('hidden')" class="text-gray-400 hover:text-gray-600">
-                        <i class="ti ti-x text-xl"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
                     </button>
                 </div>
-                <form class="space-y-4">
+                <form id="studentCreateForm" action="<?= BASE_URL ?>/utilisateurs/create" method="POST" class="space-y-4">
+                    <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($csrfToken) ?>">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <!-- Photo -->
-                        <div class="flex items-start gap-3">
-                            <div class="w-14 h-14 rounded-full bg-gray-100 border-2 border-dashed border-gray-300 flex items-center justify-center overflow-hidden relative">
-                                <img id="profilePreview" src="" class="w-full h-full object-cover hidden">
-                                <i id="profilePlaceholder" class="ti ti-user text-2xl text-gray-400"></i>
-                            </div>
-                            <div class="flex flex-col gap-1">
-                                <input type="file" id="profileUpload" accept="image/*" class="hidden">
-                                <button type="button" onclick="document.getElementById('profileUpload').click()" class="px-2 py-1 bg-blue-600 text-white rounded-lg text-xs hover:bg-blue-700">Uploader</button>
-                            </div>
-                        </div>
-                        <!-- Nom -->
+                        <!-- Nom complet -->
                         <div>
-                            <label class="block text-xs font-medium text-gray-700 mb-1">Nom complet</label>
-                            <input type="text" class="w-full px-3 py-1.5 text-sm border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none bg-gray-50 focus:bg-white transition" placeholder="Ex: Aminata Diop">
+                            <label class="block text-xs font-medium text-gray-700 mb-1">Nom complet *</label>
+                            <input type="text" name="nom" required class="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none bg-gray-50 focus:bg-white transition" placeholder="Ex: Aminata Diop">
                         </div>
+                        
                         <!-- Email -->
                         <div>
-                            <label class="block text-xs font-medium text-gray-700 mb-1">Email</label>
-                            <input type="email" class="w-full px-3 py-1.5 text-sm border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none bg-gray-50 focus:bg-white transition" placeholder="aminata@edu.sn">
+                            <label class="block text-xs font-medium text-gray-700 mb-1">Email *</label>
+                            <input type="email" name="email" required class="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none bg-gray-50 focus:bg-white transition" placeholder="aminata@edu.sn">
                         </div>
-            <!-- Téléphone -->
+                        
+                        <!-- Téléphone -->
                         <div>
-                            <label class="block text-xs font-medium text-gray-700 mb-1">Téléphone</label>
-                            <input type="tel" class="w-full px-3 py-1.5 text-sm border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none bg-gray-50 focus:bg-white transition" placeholder="+221 77 ...">
+                            <label class="block text-xs font-medium text-gray-700 mb-1">Téléphone *</label>
+                            <input type="tel" name="telephone" required class="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none bg-gray-50 focus:bg-white transition" placeholder="+221 77 123 45 67">
                         </div>
-                        <!-- Département -->
+                        
+                        <!-- Cohorte -->
                         <div>
-                            <label class="block text-xs font-medium text-gray-700 mb-1">Département</label>
-                            <select class="w-full px-3 py-1.5 text-sm border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none bg-gray-50 focus:bg-white transition">
-                                <option value="">Sélectionner</option>
-                                <option value="informatique">Informatique</option>
-                                <option value="gestion">Gestion</option>
-                                <option value="sciences">Sciences</option>
+                            <label class="block text-xs font-medium text-gray-700 mb-1">Cohorte *</label>
+                            <select name="cohorte_id" required class="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none bg-gray-50 focus:bg-white transition">
+                                <option value="">Sélectionner une cohorte</option>
+                                <?php foreach ($cohortes as $cohorte): ?>
+                                    <option value="<?= (int)$cohorte['id'] ?>">
+                                        <?php
+                                            $deptName = $cohorte['department_name'] ?? ($cohorte['departmentName'] ?? '');
+                                            $label = trim(($deptName ? ($deptName . ' - ') : '') . ($cohorte['name'] ?? ''));
+                                        ?>
+                                        <?= htmlspecialchars($label) ?>
+                                    </option>
+                                <?php endforeach; ?>
                             </select>
+
                         </div>
-                        <!-- Rôle -->
-                        <div>
-                            <label class="block text-xs font-medium text-gray-700 mb-1">Rôle</label>
-                            <select class="w-full px-3 py-1.5 text-sm border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none bg-gray-50 focus:bg-white transition">
-                                <option value="etudiant">Étudiant</option>
-                                <option value="delegue">Admin</option>
-                                
-                            </select>
-                        </div>
+                        
+                        <input type="hidden" name="role" value="etudiant">
                     </div>
                 </form>
             </div>
             <div class="bg-gray-50 px-4 py-3 sm:px-5 sm:flex sm:flex-row-reverse gap-2">
-                <button onclick="document.getElementById('modalAddStudent').classList.add('hidden')" class="px-4 py-1.5 bg-white border border-gray-300 text-gray-700 rounded-lg text-sm font-medium hover:bg-gray-50 transition">Annuler</button>
-                <button class="px-4 py-1.5 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700 transition">Créer étudiant</button>
+                <button type="button" onclick="document.getElementById('modalAddStudent').classList.add('hidden')" class="px-4 py-2 bg-white border border-gray-300 text-gray-700 rounded-lg text-sm font-medium hover:bg-gray-50 transition">Annuler</button>
+                <button type="submit" form="studentCreateForm" id="studentCreateSubmit" class="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700 transition">Créer étudiant</button>
             </div>
         </div>
     </div>
-            </div>
+</div>
 
 <!-- SECTION 7 : Modal Modifier Étudiant compact -->
 <div id="modalEditStudent" class="hidden fixed inset-0 z-50 overflow-y-auto">
