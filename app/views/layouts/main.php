@@ -18,7 +18,7 @@
 <body class="p-0 m-0">
 
     <?php if (!empty($_SESSION['flash']['success'])): ?>
-        <div class="fixed left-[60%] top-4 z-50 w-[calc(100%-2rem)] max-w-xl -translate-x-1/2 rounded-lg border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-700 shadow">
+        <div class="fixed left-[70%] top-4 z-50 w-[calc(100%-2rem)] max-w-xl -translate-x-1/2 rounded-lg border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-700 shadow">
             <?= htmlspecialchars($_SESSION['flash']['success']) ?>
         </div>
         <?php unset($_SESSION['flash']['success']); ?>
@@ -56,6 +56,7 @@
     <script src="<?= ASSET_URL ?>/js/utilisateur.js"></script>
   
     <script src="<?= ASSET_URL ?>/js/cohorte_department.js"></script>
+    <script src="<?= ASSET_URL ?>/js/setting.js"></script>
 
 </body>
 </html>
