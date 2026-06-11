@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\Cohorte;
+use App\Models\CohorteDept;
 use App\Models\User;
 use App\Services\MailService;
 use Throwable;
@@ -15,10 +16,19 @@ class UserController
     {
         $user = $this->requireRole('admin');
         $cohortes = (new Cohorte())->findActive();
+        $departements = (new CohorteDept())->allActive();
+        $filters = $this->studentFilters();
+        $page = max(1, (int)($_GET['page'] ?? 1));
+        $students = $this->users()->searchStudents($filters, $page, 8);
+        $stats = $this->users()->studentStats($filters);
 
         $this->render('admin/utilisateurs', 'Utilisateurs', [
             'user' => $user,
             'cohortes' => $cohortes,
+            'departements' => $departements,
+            'students' => $students,
+            'stats' => $stats,
+            'filters' => $filters,
         ]);
     }
 
@@ -65,8 +75,8 @@ class UserController
             );
 
             if (!$mailResult['sent']) {
-                $_SESSION['flash']['reset_link'] = $mailResult['link'];
-                $this->flash('error', 'Compte créé, mais email non envoyé. Le lien temporaire est affiché.');
+                $this->users()->deleteStudent($userId);
+                $this->flash('error', 'Impossible d\'envoyer l\'email d\'activation. Le compte étudiant n\'a pas été créé.');
                 $this->redirect('/utilisateurs');
             }
 
@@ -76,6 +86,63 @@ class UserController
             $this->flash('error', 'Impossible de créer le compte étudiant: ' . $e->getMessage());
             $this->redirect('/utilisateurs');
         }
+    }
+
+    public function updateStudent(): void
+    {
+        $this->validateCsrf();
+        $this->requireRole('admin');
+
+        $studentId = (int)($_POST['id'] ?? 0);
+        $data = [
+            'nom' => trim($_POST['nom'] ?? ''),
+            'email' => trim($_POST['email'] ?? ''),
+            'telephone' => trim($_POST['telephone'] ?? ''),
+            'cohort_id' => (int)($_POST['cohorte_id'] ?? 0),
+        ];
+
+        if ($studentId < 1 || $data['nom'] === '' || !filter_var($data['email'], FILTER_VALIDATE_EMAIL) || $data['cohort_id'] < 1) {
+            $this->flash('error', 'Informations étudiant invalides.');
+            $this->redirect('/utilisateurs');
+        }
+
+        $existing = $this->users()->findByEmail($data['email']);
+        if ($existing && (int)$existing['id'] !== $studentId) {
+            $this->flash('error', 'Cet email est déjà utilisé par un autre compte.');
+            $this->redirect('/utilisateurs');
+        }
+
+        $updated = $this->users()->updateStudent($studentId, $data);
+        $this->flash($updated ? 'success' : 'error', $updated ? 'Étudiant modifié avec succès.' : 'Impossible de modifier cet étudiant.');
+        $this->redirect('/utilisateurs');
+    }
+
+    public function toggleStudent(): void
+    {
+        $this->validateCsrf();
+        $this->requireRole('admin');
+
+        $studentId = (int)($_POST['id'] ?? 0);
+        $isActive = (int)($_POST['is_active'] ?? 0);
+
+        if ($studentId < 1) {
+            $this->flash('error', 'Étudiant invalide.');
+            $this->redirect('/utilisateurs');
+        }
+
+        $updated = $this->users()->setActive($studentId, $isActive === 1 ? 1 : 0);
+        $this->flash($updated ? 'success' : 'error', $updated ? 'Statut étudiant mis à jour.' : 'Impossible de mettre à jour le statut.');
+        $this->redirect('/utilisateurs');
+    }
+
+    private function studentFilters(): array
+    {
+        return [
+            'search' => trim($_GET['search'] ?? ''),
+            'department_id' => (int)($_GET['department_id'] ?? 0),
+            'cohort_id' => (int)($_GET['cohort_id'] ?? 0),
+            'status' => $_GET['status'] ?? 'all',
+        ];
     }
 
     private function sendActivationEmail(string $email, string $name, string $token, string $subject): array

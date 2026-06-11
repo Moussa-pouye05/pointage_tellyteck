@@ -20,22 +20,29 @@ class MailService
 
             $mail->Host = SMTP_HOST;
             $mail->SMTPAuth = true;
-            $mail->Username = SMTP_USER;
-            $mail->Password = SMTP_PASS;
+            $mail->Username = trim(SMTP_USER);
+            $mail->Password = trim(SMTP_PASS);
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->Port = SMTP_PORT;
+            $mail->CharSet = 'UTF-8';
+            $mail->SMTPOptions = [
+                'ssl' => [
+                    'verify_peer' => false,
+                    'verify_peer_name' => false,
+                    'allow_self_signed' => true,
+                ],
+            ];
 
             $mail->setFrom(
-                SMTP_FROM,
-                SMTP_NAME
+                trim(SMTP_FROM),
+                trim(SMTP_NAME)
             );
 
-            $mail->addAddress($to);
-
+            $mail->addAddress(trim($to));
             $mail->isHTML(true);
-
             $mail->Subject = $subject;
             $mail->Body = $body;
+            $mail->AltBody = strip_tags($body);
 
             return $mail->send();
 
